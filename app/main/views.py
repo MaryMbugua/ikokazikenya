@@ -24,15 +24,12 @@ def index():
 @main.route('/employeedashboard')
 @login_required
 def employee():
-    '''
-    view  root page function that returns 
-    the index page and its data
-    '''
+    employee = Employee.query.all()
 
-    title = 'blog!'
-     
+    if employee is None:
+        abort(404)
+    title = 'Employee Dashboard'
 
-    
-    return render_template('employeedashboard.html',title = title)
+    return render_template('employeedashboard.html',title = title,employee = employee)
 
 

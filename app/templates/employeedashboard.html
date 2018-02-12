@@ -11,5 +11,31 @@
         employee dashboard
     </h1>
     
+    <div class="container">
+    <div class="row">
+    displaying  Username
+        <div class="col-md-4">
+            <h3> {{employee.username| capitalize}} </h3>
+        
+            <!--Displaying user bio-->
+            {% if employee.bio %}
+            <p> {{employee.bio}}</p>
+            {%else%}
+            <p> {{employee.username| capitalize}} has no bio </p>
+            {% endif %}
+        </div>
+        
+        <!--Display profile photo-->
+        <div class="col-md-4">
+        
+            {% if employee.profile_pic_path %}
+            <img src="{{url_for('static',filename=employees.profile_pic_path)}}" alt="" class="img-thumbnail">
+            {%else%}
+            <p>No profile picture</p>
+            {% endif %}
+      </div>
+    </div>
+    </div>
+    
 </body>
 </html>
