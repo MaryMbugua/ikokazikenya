@@ -9,8 +9,8 @@ class RegistrationemployeeForm(FlaskForm):
     username = StringField('Enter your username',validators= [Required()])
     firstname = StringField('Enter your firstname',validators= [Required()])
     lastname = StringField('Enter your lastname',validators= [Required()])
-    password = PasswordField('Password',validators=[Required(),
-    EqualTo('password_confirm',message= 'Passwords must match')])
+    password = PasswordField('Password',validators=[Required()])
+    EqualTo('password_confirm',message= 'Passwords must match')
     password_confirm = PasswordField('Confirm Password',validators=[Required()])
     submit = SubmitField('Sign Up')
 
@@ -32,8 +32,8 @@ class RegistrationemployerForm(FlaskForm):
     username = StringField('Enter your username',validators= [Required()])
     firstname = StringField('Enter your firstname',validators= [Required()])
     lastname = StringField('Enter your lastname',validators= [Required()])
-    password = PasswordField('Password',validators=[Required(),
-    EqualTo('password_confirm',message= 'Passwords must match')])
+    password = PasswordField('Password',validators=[Required()])
+    EqualTo('password_confirm',message= 'Passwords must match')
     password_confirm = PasswordField('Confirm Password',validators=[Required()])
     submit = SubmitField('Sign Up')
 

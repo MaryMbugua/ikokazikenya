@@ -17,7 +17,15 @@ class Employee(UserMixin,db.Model):
     lastname = db.Column(db.String(255),index = True)
     email = db.Column(db.String(255),unique = True,index = True)
     password_hash = db.Column(db.String(255))
-
+    skill = db.Column(db.String(255))
+    experience = db.Column(db.String(255))
+    contact = db.Column(db.String(255))
+    profilepic_path = db.Column(db.String(255))
+    gender = db.Column(db.String(255))
+    age = db.Column(db.String(255))
+    status = db.Column(db.String(255))
+    location = db.Column(db.String(255))
+    category = db.Column(db.String(255))
     @property
     def password(self):
         raise AttributeError('You cannot read the password attribute')
