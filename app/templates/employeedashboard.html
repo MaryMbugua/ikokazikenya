@@ -18,18 +18,18 @@
             <h3> {{employee.username| capitalize}} </h3>
         
             <!--Displaying user bio-->
-            {% if employee.bio %}
-            <p> {{employee.bio}}</p>
+            {% if employee.skill %}
+            <p> {{employee.skill}}</p>
             {%else%}
-            <p> {{employee.username| capitalize}} has no bio </p>
+            <p> {{employee.username| capitalize}} has no skill </p>
             {% endif %}
         </div>
         
         <!--Display profile photo-->
         <div class="col-md-4">
         
-            {% if employee.profile_pic_path %}
-            <img src="{{url_for('static',filename=employees.profile_pic_path)}}" alt="" class="img-thumbnail">
+            {% if employee.profilepic_path %}
+            <img src="{{url_for('static',filename=employee.profilepic_path)}}" alt="" class="img-thumbnail">
             {%else%}
             <p>No profile picture</p>
             {% endif %}

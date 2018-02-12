@@ -12,7 +12,7 @@ def login():
         user = Employee.query.filter_by(email=login_form.email.data).first()
         if user is not None and user.verify_password(login_form.password.data):
             login_user(user,login_form.remember.data)
-            return redirect(url_for('main.employee'))
+            return redirect(url_for('main.employee',uname=current_employee.username))
         flash('Invalid username or Password')
 
     title = "Employee Login"

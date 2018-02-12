@@ -21,10 +21,10 @@ def index():
 
     
     return render_template('index.html',title = title)
-@main.route('/employeedashboard')
-@login_required
-def employee():
-    employee = Employee.query.all()
+@main.route('/employeedashboard/<uname>')
+# @login_required
+def employee(uname):
+    employee = Employee.query.filter_by(username = uname).first()
 
     if employee is None:
         abort(404)
