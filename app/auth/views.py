@@ -3,19 +3,17 @@ from . import auth
 from ..models import Employee,Employer
 from .forms import RegistrationemployeeForm,LoginemployeeForm,RegistrationemployerForm,LoginemployerForm
 from .. import db
-from flask_login import login_user,logout_user,login_required
+from flask_login import login_user,logout_user,login_required,current_user
 
 @auth.route('/employeelogin',methods = ["GET","POST"])
 def login():
     login_form = LoginemployeeForm()
     if login_form.validate_on_submit():
-        user = Employee.query.filter_by(email=login_form.email.data).first()
-        if user is not None and user.verify_password(login_form.password.data):
-            login_user(user,login_form.remember.data)
-            return redirect(url_for('main.employee',uname=current_employee.username))
-        flash('Invalid username or Password')
-
-    title = "Employee Login"
+        employee = Employee.query.filter_by(email=login_form.email.data).first()
+        if employee is not None and employee.verify_password(login_form.password.data):
+            login_user(employee,login_form.remember.data)
+            return redirect(url_for('main.index'))
+    
     return render_template('auth/employee_login.html',login_form=login_form,title=title)
 
 

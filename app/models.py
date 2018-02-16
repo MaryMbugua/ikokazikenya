@@ -26,6 +26,7 @@ class Employee(UserMixin,db.Model):
     status = db.Column(db.String(255))
     location = db.Column(db.String(255))
     category = db.Column(db.String(255))
+    jobad = db.relationship("Jobad",backref='employee',lazy="dynamic")
     @property
     def password(self):
         raise AttributeError('You cannot read the password attribute')
@@ -59,5 +60,25 @@ class Employer(UserMixin,db.Model):
     def verify_password(self,password):
         return check_password_hash(self.password_hash,password)
     def __repr__(self):
-        return f'Employee {self.username}'
+        return f'Employer {self.username}'
 
+class Jobad(UserMixin,db.Model):
+    __tablename__ = 'jobads'
+    id = db.Column(db.Integer,primary_key = True)
+    username = db.Column(db.String(255))
+    adtitle = db.Column(db.String())
+    adcontent = db.Column(db.String())
+    category = db.Column(db.String())
+    dateposted = db.Column(db.String())
+    employee_id = db.Column(db.Integer,db.ForeignKey('employees.id'))
+    
+    def __repr__(self):
+        return f'{self.adtitle}'
+
+    def save_jobads(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_jobads(self):
+        db.session.delete(self)
+        db.session.commit()

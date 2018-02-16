@@ -1,3 +1,4 @@
+{% import 'macros.html' as macro %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,10 +9,24 @@
 </head>
 <body>
         
+<nav>
+<ul class="nav navbar-nav navbar-right">
+                                {% if current_user.is_authenticated %}
+        <li>{{current_user.username}}</li>
+        <li><a href="{{url_for('main.employee',employee=current_user.username)}}">Profile</a></li>
+        <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+                              {% else %}
+        <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+                              {%endif%}
+                </ul>
 
+</nav>
 <h1>
         yaaay
 </h1>
+<div class="container">
+{{macro.displayPostsList(allposts)}}
+</div>
 
 </body>
 </html>

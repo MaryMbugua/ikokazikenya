@@ -1,0 +1,28 @@
+{% macro displayPostsList(posts_list) %} 
+{% for post in posts_list %}
+<head>
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Homemade+Apple|Open+Sans+Condensed:300,300i,700" rel="stylesheet">
+    <!-- link to bootstrap cdn -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- linkt to custom stylesheet -->
+  <link rel="stylesheet" href="{{url_for('static',filename='css/macros.css')}}">
+</head>
+
+    <div class="jumbotron jumbotronff">
+        
+            <h2>{{post.adtitle}}</h2>
+            <h4>{{post.dateposted}}</h4>
+            <p>{{post.adcontent}}</p>
+       
+    </div> <!-- jumbotron -->
+            
+            
+                <div class="container">
+                    <hr> <!-- line dividing -->
+                </div>
+                
+                
+                
+{% endfor %}
+{% endmacro %}

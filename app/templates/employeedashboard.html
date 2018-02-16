@@ -8,12 +8,11 @@
 </head>
 <body>
     <h1>
-        employee dashboard
+        Employee dashboard
     </h1>
     
     <div class="container">
     <div class="row">
-    displaying  Username
         <div class="col-md-4">
             <h3> {{employee.username| capitalize}} </h3>
         
@@ -35,6 +34,21 @@
             {% endif %}
       </div>
     </div>
+    </div>
+    <div>
+        <h1>{{employee.contact}}</h1>
+        <h2>{{employee.experince}}</h2>
+        <h2>{{employee.gender}}</h2>
+    </div>
+
+    <div class="container">
+        <a href="/employeedashboard/{{employee.username}}/editprofile">Edit Profile</a>
+
+    </div>
+    <div class="well">
+
+ 
+    <h3><a class="btn btn-primary btn-lg" href="/employeedashboard/{{ employee.id }}/postad" role="button">Make Job Ad</a></h3>
     </div>
     
 </body>
