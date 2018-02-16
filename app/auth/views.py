@@ -14,7 +14,7 @@ def login():
             login_user(employee,login_form.remember.data)
             return redirect(url_for('main.index'))
     
-    return render_template('auth/employee_login.html',login_form=login_form,title=title)
+    return render_template('auth/employee_login.html',login_form=login_form)
 
 
 @auth.route('/employeeregister',methods = ["GET","POST"])
